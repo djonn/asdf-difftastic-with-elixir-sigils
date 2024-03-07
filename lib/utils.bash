@@ -63,6 +63,13 @@ download_release() {
 get_arch() {
   arch=$(uname -m | tr '[:upper:]' '[:lower:]')
 
+  # releases use "aarch64" instead of "arm64"
+  case $arch in
+  arm64)
+    arch='aarch64'
+    ;;
+  esac
+
   echo "$arch"
 }
 
